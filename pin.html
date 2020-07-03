@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PIN</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <div class="pin">
+        <div class="scr-d">
+            <input type="password" onkeypress='validate(event)' >
+        </div>
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>4</button>
+        <button>5</button>
+        <button>6</button>
+        <button>7</button>
+        <button>8</button>
+        <button>9</button>
+        <button class="prim">DEL</button>
+        <button>0</button>
+        <button class="prim-2">PRO</button>
+    </div>
+    <script>
+        function validate(evt) {
+          var theEvent = evt || window.event;
+
+          // Handle paste
+          if (theEvent.type === 'paste') {
+              key = event.clipboardData.getData('text/plain');
+          } else {
+          // Handle key press
+              var key = theEvent.keyCode || theEvent.which;
+              key = String.fromCharCode(key);
+          }
+          var regex = /[0-9]|\./;
+          if( !regex.test(key) ) {
+            theEvent.returnValue = false;
+            if(theEvent.preventDefault) theEvent.preventDefault();
+          }
+        }
+    </script>
+</body>
+</html>
